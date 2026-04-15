@@ -1,51 +1,52 @@
-/* ===== Reset & Base ===== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+
 body {
     font-family: helvetica, arial, sans-serif;
     background-color: #f0f4f8;
     color: #2d3436;
-    padding: 25px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-/* ===== Header ===== */
+/*Title centered above the main card */
 header {
-    border-bottom: 3px solid #6c5ce7;
-    padding-bottom: 12px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 h1 {
     font-size: 2rem;
     color: #6c5ce7;
-    font-weight: bold;
 }
 
-/* ===== Main Layout ===== */
-/* Use clearfix so main wraps around floated children */
-main::after {
-    content: "";
-    display: table;
-    clear: both;
+/* ===== Main Card ===== */
+/* White card that holds the pet image and dashboard side by side */
+main {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== Pet Image ===== */
-.pet-image-container {
-    float: left;
-    padding: 10px;
-}
-
 .pet-image {
-    height: 250px;
-    border-radius: 16px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    height: 220px;
+    border-radius: 12px;
 }
 
-/* Triggered by jQuery .toggleClass('bouncing') on each button press */
+/* Bounce animation triggered by jQuery .toggleClass('bouncing') on button press */
 @keyframes bounce {
     0%   { transform: translateY(0); }
     40%  { transform: translateY(-15px); }
@@ -56,50 +57,41 @@ main::after {
     animation: bounce 0.3s ease;
 }
 
-/* ===== Dashboard ===== */
-.dashboard {
-    float: left;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    margin-left: 20px;
-    min-width: 260px;
-}
-
+/* ===== Dashboard Stats ===== */
+/* Each stat (name, weight, happiness, energy) is a div inside .dashboard */
 .dashboard div {
-    display: block;
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 8px;
 }
 
-/* ===== Notification (speech bubble) ===== */
-/* Hidden by default; shown/hidden via jQuery .show() and .fadeOut() */
+/* ===== Notification ===== */
+/* Hidden by default; shown via jQuery .show() and fades out after each action */
 .notification {
     display: none;
     margin-top: 10px;
-    margin-bottom: 4px;
-    padding: 8px 14px;
+    padding: 8px 12px;
     background-color: #fffde7;
     border: 2px solid #fdcb6e;
-    border-radius: 12px;
+    border-radius: 10px;
     color: #636e72;
     font-style: italic;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* ===== Buttons ===== */
+/* Flex row of action buttons; wraps on small screens */
 .button-container {
-    margin-top: 16px;
+    margin-top: 14px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
+/* Shared button styles */
 .button-container button {
-    width: 90px;
+    width: 80px;
     padding: 8px 0;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: #ffffff;
     border: none;
@@ -109,36 +101,19 @@ main::after {
 }
 
 /* Individual button colors */
-.treat-button {
-    background-color: #e17055;
-}
-.treat-button:hover {
-    background-color: #d35400;
-}
+.treat-button    { background-color: #e17055; }
+.treat-button:hover { background-color: #d35400; }
 
-.play-button {
-    background-color: #00b894;
-}
-.play-button:hover {
-    background-color: #009e7f;
-}
+.play-button     { background-color: #00b894; }
+.play-button:hover { background-color: #009e7f; }
 
-.exercise-button {
-    background-color: #0984e3;
-}
-.exercise-button:hover {
-    background-color: #0773c5;
-}
+.exercise-button { background-color: #0984e3; }
+.exercise-button:hover { background-color: #0773c5; }
 
-/* New button: Nap */
-.nap-button {
-    background-color: #a29bfe;
-}
-.nap-button:hover {
-    background-color: #6c5ce7;
-}
+.nap-button      { background-color: #a29bfe; }
+.nap-button:hover { background-color: #6c5ce7; }
 
-/* Press effect for all buttons */
+/* Slight shrink effect on click for all buttons */
 .button-container button:active {
     transform: scale(0.95);
 }
