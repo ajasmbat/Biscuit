@@ -1,82 +1,144 @@
-
+/* ===== Reset & Base ===== */
 * {
     box-sizing: border-box;
-  }
-  
-  body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: helvetica, arial, sans-serif;
-    margin: 25px;
-  }
-  
-  main {
-    display:block;
-    height:175px;
-  }
-  
-  header {
-    border-bottom: 1px solid black;
-  }
-  
-  h1 {
+    background-color: #f0f4f8;
+    color: #2d3436;
+    padding: 25px;
+}
+
+/* ===== Header ===== */
+header {
+    border-bottom: 3px solid #6c5ce7;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #6c5ce7;
     font-weight: bold;
-    color: #000;
-  }
-  
-  .bold {
+}
+
+/* ===== Main Layout ===== */
+/* Use clearfix so main wraps around floated children */
+main::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ===== Pet Image ===== */
+.pet-image-container {
+    float: left;
+    padding: 10px;
+}
+
+.pet-image {
+    height: 250px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Triggered by jQuery .toggleClass('bouncing') on each button press */
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    40%  { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+.pet-image.bouncing {
+    animation: bounce 0.3s ease;
+}
+
+/* ===== Dashboard ===== */
+.dashboard {
+    float: left;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    margin-left: 20px;
+    min-width: 260px;
+}
+
+.dashboard div {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* ===== Notification (speech bubble) ===== */
+/* Hidden by default; shown/hidden via jQuery .show() and .fadeOut() */
+.notification {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    padding: 8px 14px;
+    background-color: #fffde7;
+    border: 2px solid #fdcb6e;
+    border-radius: 12px;
+    color: #636e72;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* ===== Buttons ===== */
+.button-container {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.button-container button {
+    width: 90px;
+    padding: 8px 0;
+    font-size: 14px;
     font-weight: bold;
-  }
-  
-  p {
-    max-width: 600px;
-  }
-  
-  
-  li {
-    margin-bottom: 5px;
-  }
-  
-  footer {
-    padding-top: 25px;
-    border-top: 1px solid black;
-  }
-  
-  footer a {
-    float:left;
-    margin:5px;
-  }
-  
-  .pet-image {
-    height:250px;
-  }
-  
-  .dashboard div {
-    display:block;
-  }
-  
-  .pet-image-container {
-    float:left;
-    padding:10px;
-  }
-  
-  .dashboard {
-    float:left;
-    padding:20px;
-  }
-  
-  .button-container {
-    margin-top:20px;
-  }
-  
-  .button-container button {
-    width: 100px;
-      margin-right: 10px;
-      text-align: center;
-      display: inline-block;
-      float: left;
-    font-size:15px;
-    background-color: #1e2835;
-    border-color: #404853;
-    cursor:pointer;
-    background-image: linear-gradient(to bottom,rgba(246,246,246,.1)0%,rgba(30,40,53,0)66%);
-    color: #fafafa;
-  }
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Individual button colors */
+.treat-button {
+    background-color: #e17055;
+}
+.treat-button:hover {
+    background-color: #d35400;
+}
+
+.play-button {
+    background-color: #00b894;
+}
+.play-button:hover {
+    background-color: #009e7f;
+}
+
+.exercise-button {
+    background-color: #0984e3;
+}
+.exercise-button:hover {
+    background-color: #0773c5;
+}
+
+/* New button: Nap */
+.nap-button {
+    background-color: #a29bfe;
+}
+.nap-button:hover {
+    background-color: #6c5ce7;
+}
+
+/* Press effect for all buttons */
+.button-container button:active {
+    transform: scale(0.95);
+}
